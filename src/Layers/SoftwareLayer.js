@@ -1,25 +1,18 @@
 import React from 'react';
 import { Layer, Rect, Text } from 'react-konva';
-import hasOverlap from '../utils/viewport';
+import { hasOverlap, viewportRectangle } from '../utils/viewport';
 
 const SoftwareLayer = ({ layoutData, stage }) => {
-    const viewportRectangle = {
-        x: 0,
-        y: 0,
-        width: stage.width,
-        height: stage.height,
-    };
-
+    const viewport = viewportRectangle(stage);
     return (
         <Layer key="software-layer">
             {layoutData?.layers?.map((layer) => {
                 return layer.items.map((item) => {
                     return item.items.map((deviceItem, i) => {
                         const { posX, posY, width, height, scale } = deviceItem;
+                        const device = { x: posX, y: posY, width, height };
 
-                        if (!hasOverlap(viewportRectangle, { x: posX, y: posY, width, height })) {
-                            return null;
-                        }
+                        if (!hasOverlap(viewport, device)) return null;
 
                         return (
                             <React.Fragment key={`softwareLayer-${i}`}>

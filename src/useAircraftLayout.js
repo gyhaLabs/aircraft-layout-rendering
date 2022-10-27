@@ -2,7 +2,6 @@ import { useMemo, useState } from 'react';
 
 const useAircraftLayout = () => {
     const layoutData = useMemo(() => {
-        console.log('generating layoutData');
         const data = {
             layers: [
                 {

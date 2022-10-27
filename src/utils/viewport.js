@@ -1,5 +1,5 @@
 // Use center-center distance check for non-rotated rects.
-export default function hasOverlap(r1, r2) {
+export function hasOverlap(r1, r2) {
     let w1 = r1.width,
         h1 = r1.height;
     let w2 = r2.width,
@@ -13,4 +13,13 @@ export default function hasOverlap(r1, r2) {
     let hasOverlap = diff.x <= compWidth && diff.y <= compHeight;
 
     return hasOverlap;
+}
+
+export function viewportRectangle(stage) {
+    return {
+        x: -stage.x / stage.scale,
+        y: -stage.y / stage.scale,
+        width: stage.width / stage.scale,
+        height: stage.height / stage.scale,
+    };
 }

@@ -20,15 +20,26 @@ function App() {
         height: 0,
     });
 
-    const handleMouseMove = useCallback((e) => {
-        e.evt.preventDefault();
-        // const stage = e.target.getStage();
-        // console.log(stage.getPointerPosition().x, stage.getPointerPosition().y);
+    const handleDragEnd = useCallback((e) => {
+        const stage = e.target.getStage();
+        const scale = stage.scaleX();
+        const mousePointTo = {
+            x: (stage.getPointerPosition().x - stage.x()) / scale,
+            y: (stage.getPointerPosition().y - stage.y()) / scale,
+        };
+
+        const stageToSet = {
+            scale: scale,
+            x: (stage.getPointerPosition().x / scale - mousePointTo.x) * scale,
+            y: (stage.getPointerPosition().y / scale - mousePointTo.y) * scale,
+            width: stage.width(),
+            height: stage.height(),
+        };
+
+        setStage(stageToSet);
     }, []);
 
     const handleWheel = useCallback((e) => {
-        e.evt.preventDefault();
-
         const scaleBy = 1.1;
         const stage = e.target.getStage();
         const oldScale = stage.scaleX();
@@ -73,7 +84,7 @@ function App() {
                 width={window.innerWidth}
                 height={window.innerHeight - 50}
                 onWheel={handleWheel}
-                onMouseMove={handleMouseMove}
+                onDragEnd={handleDragEnd}
                 scaleX={stage.scale}
                 scaleY={stage.scale}
                 x={stage.x}
