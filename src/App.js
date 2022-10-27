@@ -105,3 +105,11 @@ function App() {
 }
 
 export default App;
+
+/* 
+    Solution help from:
+    https://longviewcoder.com/2021/02/04/html5-canvas-viewport-optimisation-with-konva/
+    
+    Test here:    
+    https://codesandbox.io/s/github/gyhaLabs/aircraft-layout-rendering
+*/
