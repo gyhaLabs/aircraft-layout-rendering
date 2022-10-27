@@ -1,8 +1,8 @@
 import React, { useCallback } from 'react';
 import { Stage, Layer, Image } from 'react-konva';
 import { useState } from 'react';
-import useImages from './useImages';
-import useAircraftLayout from './useAircraftLayout';
+import useImages from './hooks/useImages';
+import useAircraftLayout from './hooks/useAircraftLayout';
 import SoftwareLayer from './Layers/SoftwareLayer';
 import DeviceLayer from './Layers/DeviceLayer';
 import SeatLayer from './Layers/SeatLayer';

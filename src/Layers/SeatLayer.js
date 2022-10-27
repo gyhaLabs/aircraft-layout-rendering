@@ -1,6 +1,6 @@
 import React from 'react';
 import { Image, Layer, Text } from 'react-konva';
-import useImages from '../useImages';
+import useImages from '../hooks/useImages';
 
 const SeatLayer = ({ layer, hoveredIds, setHoveredIds, stage }) => {
     const { box, boxHovered, boxError, boxErrorHovered } = useImages();
