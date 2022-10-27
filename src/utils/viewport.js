@@ -11,15 +11,16 @@ export function hasOverlap(r1, r2) {
         compHeight = (r1.height + r2.height) / 2;
 
     let hasOverlap = diff.x <= compWidth && diff.y <= compHeight;
-
     return hasOverlap;
 }
 
 export function viewportRectangle(stage) {
+    const { x, y, scale, width, height } = stage;
+
     return {
-        x: -stage.x / stage.scale,
-        y: -stage.y / stage.scale,
-        width: stage.width / stage.scale,
-        height: stage.height / stage.scale,
+        x: -x / scale,
+        y: -y / scale,
+        width: width / scale,
+        height: height / scale,
     };
 }
